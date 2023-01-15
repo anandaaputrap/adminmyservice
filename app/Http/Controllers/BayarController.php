@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bayar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BayarController extends Controller
 {
@@ -13,7 +15,8 @@ class BayarController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('bayar')->get();
+        return view('bayar.home', compact('data'));
     }
 
     /**
@@ -56,7 +59,9 @@ class BayarController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('bayar.edit')->with([
+            'bayar' => Bayar::find($id),
+        ]);
     }
 
     /**
@@ -68,7 +73,9 @@ class BayarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bayar = Bayar::find($id);
+        $bayar->update($request->all());
+        return redirect()->route('pengelola.bayar.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

@@ -11,7 +11,7 @@ class Booking extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = "booking";
-    
+    public $timestamps = false;
     protected $primaryKey = 'id_booking';
     protected $fillable = [
         'tgl_booking',

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pelanggan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PelangganController extends Controller
 {
@@ -13,7 +15,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('pelanggan')->get();
+        return view('pelanggan.home', compact('data'));
     }
 
     /**
@@ -56,19 +59,16 @@ class PelangganController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pelanggan.edit')->with([
+            'pelanggan' => Pelanggan::find($id),
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $pelanggan = Pelanggan::find($id);
+        $pelanggan->update($request->all());
+        return redirect()->route('pengelola.pelanggan.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

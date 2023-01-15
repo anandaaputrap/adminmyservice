@@ -11,7 +11,7 @@ class Pelanggan extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = "pelanggan";
-    
+    public $timestamps = false;
     protected $primaryKey = 'id_pelanggan';
     protected $fillable = [
         'nama_pelanggan',

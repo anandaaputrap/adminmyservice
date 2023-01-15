@@ -11,7 +11,7 @@ class Teknisi extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = "teknisi";
-    
+    public $timestamps = false;
     protected $primaryKey = 'id_teknisi';
     protected $fillable = [
         'nama_teknisi',

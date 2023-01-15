@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -13,7 +15,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('booking')->get();
+        return view('booking.home', compact('data'));
     }
 
     /**
@@ -56,7 +59,9 @@ class BookingController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('booking.edit')->with([
+            'booking' => Booking::find($id),
+        ]);
     }
 
     /**
@@ -68,7 +73,9 @@ class BookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $booking = Booking::find($id);
+        $booking->update($request->all());
+        return redirect()->route('pengelola.booking.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

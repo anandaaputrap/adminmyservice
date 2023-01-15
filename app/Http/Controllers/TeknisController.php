@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teknisi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TeknisController extends Controller
 {
@@ -13,7 +15,8 @@ class TeknisController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('teknisi')->get();
+        return view('teknisi.home', compact('data'));
     }
 
     /**
@@ -56,7 +59,9 @@ class TeknisController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('teknisi.edit')->with([
+            'teknisi' => Teknisi::find($id),
+        ]);
     }
 
     /**
@@ -68,7 +73,9 @@ class TeknisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $teknisi = Teknisi::find($id);
+        $teknisi->update($request->all());
+        return redirect()->route('pengelola.teknisi.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

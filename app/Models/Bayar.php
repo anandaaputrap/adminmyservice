@@ -11,7 +11,7 @@ class Bayar extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = "bayar";
-    
+    public $timestamps = false;
     protected $primaryKey = 'id_pembayaran';
     protected $fillable = [
         'email_teknisi',

@@ -9,8 +9,8 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="">
+    <li class="nav-item {{ Request::is('pengelola/home') ? 'active' : ''; }}">
+        <a class="nav-link" href="{{ route('pengelola.home.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -23,25 +23,25 @@
         Menu
     </div>
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="">
+    <li class="nav-item {{ Request::is('pengelola/pelanggan') ? 'active' : ''; }}">
+        <a class="nav-link" href="{{ route('pengelola.pelanggan.index') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>Pelanggan</span></a>
     </li>
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="">
+    <li class="nav-item {{ Request::is('pengelola/teknisi') ? 'active' : ''; }}">
+        <a class="nav-link" href="{{ route('pengelola.teknisi.index') }}">
             <i class="fas fa-fw fa-people-carry"></i>
-            <span>Tukang</span></a>
+            <span>Teknisi</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="">
+    <li class="nav-item {{ Request::is('pengelola/booking') ? 'active' : ''; }}">
+        <a class="nav-link" href="{{ route('pengelola.booking.index') }}">
             <i class="fas fa-fw fa-cart-plus"></i>
-            <span>Pemesanan</span></a>
+            <span>Booking</span></a>
     </li>
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="">
+    <li class="nav-item {{ Request::is('pengelola/bayar') ? 'active' : ''; }}">
+        <a class="nav-link" href="{{ route('pengelola.bayar.index') }}">
             <i class="fas fa-fw fa-money-bill"></i>
             <span>Pembayaran</span></a>
     </li>
