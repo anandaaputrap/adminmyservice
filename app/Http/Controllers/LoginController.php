@@ -35,7 +35,7 @@ class LoginController extends Controller
             'email_admin' => $request->email_admin,
             'password_admin' => $request->password_admin,
         ];
-        try {        
+        try {
             // dd(Auth::user());
             Auth::attempt($credential);
             if (Auth::user()) {

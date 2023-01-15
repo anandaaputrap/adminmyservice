@@ -19,6 +19,9 @@ class Level
     {
         if(!Auth::check()){
             return redirect('login');
+
+            return redirect()->route('login');
+
         }
         $user = Auth::user();
         if($user->level == $level){
