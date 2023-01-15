@@ -36,10 +36,9 @@ class LoginController extends Controller
             'password_admin' => $request->password_admin,
         ];
         try {        
-            dd(Auth::user());
             Auth::attempt($credential);
             if (Auth::user()) {
-                return redirect()->route('admin.home.index');
+                return redirect()->route('pengelola.home.index');
             }
             else {
                 // dd('gakenek');
